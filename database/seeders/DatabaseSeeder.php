@@ -21,8 +21,16 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            //RoleSeeder::class,
-            UserSeeder::class,
+            //OK RoleSeeder::class,
+            //OK UserSeeder::class,
+            //OK UploadSeeder::class,
+            // ok ExerciseSeeder::class,
+            // ok PageSeeder::class,
+            //ok PlanSeeder::class,
+            // ok WorkoutSeeder::class,
+            // ok SwimSetSeeder::class,
+            // ok MylistSeeder::class,
+            // ok MylistItemSeeder::class,
         ]);
     }
 }
