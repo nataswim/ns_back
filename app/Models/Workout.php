@@ -60,7 +60,7 @@ class Workout extends Model
      */
     public function swimSets()
     {
-        return $this->hasMany(SwimSet::class);
+        return $this->belongsToMany(SwimSet::class, 'workout_swim_sets');
     }
     //public function swimSets()
 //{

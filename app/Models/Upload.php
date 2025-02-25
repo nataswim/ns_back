@@ -39,7 +39,7 @@ class Upload extends Model
         return $this->belongsTo(User::class);
     }
 
-    // ... autres relations (exercises, pages)
+    //  relations (exercises, pages)
 
     public function exercises()
     {
@@ -49,5 +49,11 @@ class Upload extends Model
     public function pages()
     {
         return $this->hasMany(Page::class);
+    }
+    // Correction : Postman :: getUserUploads utilise la relation uploads() de User
+    public function getUserUploads(User $user)
+    {
+        $uploads = $user->uploads;
+        return response()->json($uploads, 200);
     }
 }

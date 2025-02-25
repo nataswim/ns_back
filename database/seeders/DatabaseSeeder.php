@@ -31,6 +31,9 @@ class DatabaseSeeder extends Seeder
             // ok SwimSetSeeder::class,
             // ok MylistSeeder::class,
             // ok MylistItemSeeder::class,
+            // ok PlanWorkoutSeeder::class,
+            // WorkoutExerciseSeeder::class,
+            WorkoutSwimSetSeeder::class,
         ]);
     }
 }

@@ -37,7 +37,7 @@ class SwimSet extends Model
      */
     public function workout()
     {
-        return $this->belongsTo(Workout::class);
+        return $this->belongsToMany(Workout::class, 'workout_swim_sets');
     }
    // public function workouts()
     //{

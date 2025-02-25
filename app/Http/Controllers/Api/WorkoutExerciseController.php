@@ -41,14 +41,21 @@ class WorkoutExerciseController extends Controller
         return response()->json(['message' => 'Exercise attached successfully.'], 201);
     }
 
-
+    public function show(Workout $workout, Exercise $exercise)
+    {
+        if ($workout->exercises->contains($exercise)) {
+            return response()->json($exercise, 200);
+        } else {
+            return response()->json(['message' => 'Exercise not found in workout.'], 404);
+        }
+    }
 
     /**
      * Detach an exercise from a workout.
      */
     public function destroy(Workout $workout, Exercise $exercise)
     {
-       // Vérifier si l'association existe avant de détacher
+        // Vérifier si l'association existe avant de détacher
         if (!$workout->exercises()->where('exercise_id', $exercise->id)->exists()) {
             return response()->json(['error' => 'Exercise is not attached to this workout.'], 400);
         }

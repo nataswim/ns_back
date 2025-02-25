@@ -9,9 +9,12 @@ use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\ExerciseController;
 use App\Http\Controllers\Api\PlanController;
 use App\Http\Controllers\Api\WorkoutController;
+use App\Http\Controllers\Api\WorkoutExerciseController;
 use App\Http\Controllers\Api\MylistController;
 use App\Http\Controllers\Api\SwimSetController;
 use App\Http\Controllers\Api\MylistItemController;
+use App\Http\Controllers\Api\PlanWorkoutController;
+use App\Http\Controllers\Api\WorkoutSwimSetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,18 +72,21 @@ Route::get('plans/{plan}/workouts', [PlanController::class, 'getWorkouts']); // 
 Route::post('plans/{plan}/workouts/{workout}', [PlanController::class, 'addWorkout']); // Correction : utilisation de PlanController
 Route::delete('plans/{plan}/workouts/{workout}', [PlanController::class, 'removeWorkout']); // Correction : utilisation de PlanController
 
+Route::get('/plans/{plan}/workouts/{workout}', [PlanWorkoutController::class, 'show']); // Correction : utilisation de PlanWorkoutController
+
 // ************************************************************************
 // Routes pour les séances d'entraînement (Workouts)
 // ************************************************************************
 
 Route::apiResource('workouts', WorkoutController::class);
 Route::get('workouts/{workout}/exercises', [WorkoutController::class, 'getExercises']); // Correction : utilisation de WorkoutController
+Route::get('/workouts/{workout}/exercises/{exercise}', [WorkoutExerciseController::class, 'show']); // Correction : utilisation de WorkoutExerciseController
 Route::post('workouts/{workout}/exercises/{exercise}', [WorkoutController::class, 'addExercise']); // Correction : utilisation de WorkoutController
 Route::delete('workouts/{workout}/exercises/{exercise}', [WorkoutController::class, 'removeExercise']); // Correction : utilisation de WorkoutController
 Route::get('workouts/{workout}/swim-sets', [WorkoutController::class, 'getSwimSets']); // Correction : utilisation de WorkoutController
 Route::post('workouts/{workout}/swim-sets/{swimSet}', [WorkoutController::class, 'addSwimSet']); // Correction : utilisation de WorkoutController
 Route::delete('workouts/{workout}/swim-sets/{swimSet}', [WorkoutController::class, 'removeSwimSet']); // Correction : utilisation de WorkoutController
-
+Route::get('/workouts/{workout}/swim-sets', [WorkoutSwimSetController::class, 'index']); // Correction : utilisation de WorkoutSwimSetController
 // ************************************************************************
 // Routes pour les séries de natation (Swim Sets)
 // ************************************************************************

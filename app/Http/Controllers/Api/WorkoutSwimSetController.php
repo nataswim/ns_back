@@ -21,30 +21,41 @@ class WorkoutSwimSetController extends Controller
     /**
      * Attach a swim set to a workout.
      */
-    public function store(Request $request, Workout $workout, SwimSet $swimSet) // Ajout de SwimSet dans l'injection
+    public function store(Request $request, Workout $workout, SwimSet $swimSet)
     {
-        // Pas de validation ici, car l'ID de swimSet est déjà validé par l'injection de dépendances
+        // Validation explicite
+        $validator = Validator::make([
+            'workout_id' => $workout->id,
+            'swim_set_id' => $swimSet->id,
+        ], [
+            'workout_id' => 'exists:workouts,id',
+            'swim_set_id' => 'exists:swim_sets,id',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 400);
+        }
 
         // Vérifier si l'association existe déjà
         if ($workout->swimSets()->where('swim_set_id', $swimSet->id)->exists()) {
             return response()->json(['error' => 'Swim set already attached to this workout.'], 400);
         }
 
-        $workout->swimSets()->attach($swimSet->id); // Utiliser l'ID directement
+        $workout->swimSets()->attach($swimSet->id);
         return response()->json(['message' => 'Swim set attached successfully.'], 201);
     }
 
     /**
      * Detach a swim set from a workout.
      */
-    public function destroy(Workout $workout, SwimSet $swimSet)  // Ajout de SwimSet dans l'injection
+    public function destroy(Workout $workout, SwimSet $swimSet)
     {
-         // Vérifier si l'association existe avant de détacher
+        // Vérifier si l'association existe avant de détacher
         if (!$workout->swimSets()->where('swim_set_id', $swimSet->id)->exists()) {
             return response()->json(['error' => 'Swim set is not attached to this workout.'], 400);
         }
 
-        $workout->swimSets()->detach($swimSet->id); // Utiliser l'ID directement
+        $workout->swimSets()->detach($swimSet->id);
         return response()->json(null, 204);
     }
 }

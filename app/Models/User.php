@@ -57,4 +57,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Mylist::class);
     }
+    // Ajout de la relation uploads zvec users // Correction Postman
+    public function uploads()
+    {
+        return $this->hasMany(Upload::class);
+    }
+    
 }
