@@ -10,9 +10,9 @@ class Exercise extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * 🇬🇧 The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * 🇬🇧 @var array<int, string>
      */
     protected $fillable = [
         'title',
@@ -24,9 +24,9 @@ class Exercise extends Model
     ];
 
     /**
-     * The attributes that should be cast.
+     * 🇬🇧 The attributes that should be cast.
      *
-     * @var array<string, string>
+     * 🇬🇧 @var array<string, string>
      */
     protected $casts = [
         'created_at' => 'datetime',
@@ -34,7 +34,7 @@ class Exercise extends Model
     ];
 
     /**
-     * Get the user that created the exercise.
+     * 🇬🇧 Get the user that created the exercise.
      */
     public function user()
     {
@@ -42,7 +42,7 @@ class Exercise extends Model
     }
 
     /**
-     * Get the upload associated with the exercise.
+     * 🇬🇧 Get the upload associated with the exercise.
      */
     public function upload()
     {
@@ -50,7 +50,7 @@ class Exercise extends Model
     }
 
     /**
-     * Get the swim sets for the exercise.
+     * 🇬🇧 Get the swim sets for the exercise.
      */
     public function swimSets()
     {
@@ -58,7 +58,7 @@ class Exercise extends Model
     }
 
     /**
-     * The workouts that belong to the exercise.
+     * 🇬🇧 The workouts that belong to the exercise.
      */
     public function workouts()
     {

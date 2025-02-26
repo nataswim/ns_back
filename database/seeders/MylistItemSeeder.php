@@ -13,7 +13,7 @@ use App\Models\Plan;
 class MylistItemSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * 🇬🇧 Run the database seeds.
      */
     public function run(): void
     {

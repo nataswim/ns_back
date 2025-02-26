@@ -10,9 +10,9 @@ class Page extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * 🇬🇧 The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * 🇬🇧 @var array<int, string>
      */
     protected $fillable = [
         'title',
@@ -23,9 +23,9 @@ class Page extends Model
     ];
 
     /**
-     * The attributes that should be cast.
+     * 🇬🇧 The attributes that should be cast.
      *
-     * @var array<string, string>
+     * 🇬🇧 @var array<string, string>
      */
     protected $casts = [
         'created_at' => 'datetime',
@@ -33,7 +33,7 @@ class Page extends Model
     ];
 
     /**
-     * Get the user that created the page.
+     * 🇬🇧 Get the user that created the page.
      */
     public function user()
     {
@@ -41,7 +41,7 @@ class Page extends Model
     }
 
     /**
-     * Get the upload associated with the page.
+     * 🇬🇧 Get the upload associated with the page.
      */
     public function upload()
     {

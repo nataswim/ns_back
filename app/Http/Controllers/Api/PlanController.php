@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Validator;
 class PlanController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 🇬🇧 Display a listing of the resource.
+     * 🇫🇷 Afficher la liste des plans d'entraînement.
      */
     public function index()
     {
@@ -19,15 +20,16 @@ class PlanController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 🇬🇧 Store a newly created resource in storage.
+     * 🇫🇷 Enregistrer un nouveau plan d'entraînement dans la base de données.
      */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'description' => 'nullable',
-            'plan_category' => 'nullable|max:255',
-            'user_id' => 'required|exists:users,id',
+            'title' => 'required|max:255', // 🇬🇧 Title is required / 🇫🇷 Le titre est obligatoire
+            'description' => 'nullable', // 🇬🇧 Description is optional / 🇫🇷 La description est facultative
+            'plan_category' => 'nullable|max:255', // 🇬🇧 Category is optional / 🇫🇷 La catégorie est facultative
+            'user_id' => 'required|exists:users,id', // 🇬🇧 Must reference a valid user / 🇫🇷 Doit référencer un utilisateur valide
         ]);
 
         if ($validator->fails()) {
@@ -39,7 +41,8 @@ class PlanController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 🇬🇧 Display the specified resource.
+     * 🇫🇷 Afficher un plan d'entraînement spécifique.
      */
     public function show(Plan $plan)
     {
@@ -47,15 +50,16 @@ class PlanController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 🇬🇧 Update the specified resource in storage.
+     * 🇫🇷 Mettre à jour un plan d'entraînement existant.
      */
     public function update(Request $request, Plan $plan)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'description' => 'nullable',
-            'plan_category' => 'nullable|max:255',
-            'user_id' => 'required|exists:users,id',
+            'title' => 'required|max:255', // 🇬🇧 Title is required / 🇫🇷 Le titre est obligatoire
+            'description' => 'nullable', // 🇬🇧 Description is optional / 🇫🇷 La description est facultative
+            'plan_category' => 'nullable|max:255', // 🇬🇧 Category is optional / 🇫🇷 La catégorie est facultative
+            'user_id' => 'required|exists:users,id', // 🇬🇧 Must reference a valid user / 🇫🇷 Doit référencer un utilisateur valide
         ]);
 
         if ($validator->fails()) {
@@ -67,7 +71,8 @@ class PlanController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 🇬🇧 Remove the specified resource from storage.
+     * 🇫🇷 Supprimer un plan d'entraînement spécifique de la base de données.
      */
     public function destroy(Plan $plan)
     {

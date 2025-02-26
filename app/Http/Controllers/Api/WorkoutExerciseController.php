@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class WorkoutExerciseController extends Controller
 {
     /**
-     * Display a listing of the exercises for a given workout.
+     * 🇬🇧 Display a listing of the exercises for a given workout.
      */
     public function index(Workout $workout)
     {
@@ -19,7 +19,7 @@ class WorkoutExerciseController extends Controller
     }
 
     /**
-     * Attach an exercise to a workout.
+     * 🇬🇧 Attach an exercise to a workout.
      */
     public function store(Request $request, Workout $workout)
     {
@@ -51,7 +51,7 @@ class WorkoutExerciseController extends Controller
     }
 
     /**
-     * Detach an exercise from a workout.
+     * 🇬🇧 Detach an exercise from a workout.
      */
     public function destroy(Workout $workout, Exercise $exercise)
     {

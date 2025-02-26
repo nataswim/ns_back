@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Validator;
 class MylistItemController extends Controller
 {
     /**
-     * Display a listing of the items for a given mylist.
+     * 🇬🇧 Display a listing of the items for a given mylist.
+     * 🇫🇷 Afficher la liste des éléments d'une liste personnelle donnée.
      */
     public function index(Mylist $mylist)
     {
@@ -19,13 +20,14 @@ class MylistItemController extends Controller
     }
 
     /**
-     * Store a new item in a given mylist.
+     * 🇬🇧 Store a new item in a given mylist.
+     * 🇫🇷 Ajouter un nouvel élément à une liste personnelle donnée.
      */
     public function store(Request $request, Mylist $mylist)
     {
         $validator = Validator::make($request->all(), [
-            'item_id' => 'required|integer',  // Validation de l'ID
-            'item_type' => 'required|string|max:255', // Validation du type
+            'item_id' => 'required|integer',  // 🇬🇧 Validate the ID / 🇫🇷 Valider l'ID
+            'item_type' => 'required|string|max:255', // 🇬🇧 Validate the type / 🇫🇷 Valider le type
         ]);
 
         if ($validator->fails()) {
@@ -35,7 +37,8 @@ class MylistItemController extends Controller
         $itemType = $request->input('item_type');
         $itemId = $request->input('item_id');
 
-        // Vérifier si l'item existe bien en fonction de son type
+        // 🇬🇧 Check if the item exists based on its type
+        // 🇫🇷 Vérifier si l'élément existe en fonction de son type
         switch ($itemType) {
             case 'exercise':
                 $item = \App\Models\Exercise::find($itemId);
@@ -50,10 +53,9 @@ class MylistItemController extends Controller
                 return response()->json(['error' => 'Invalid item type.'], 400);
         }
 
-         if (!$item) {
+        if (!$item) {
             return response()->json(['error' => 'Item not found.'], 404);
         }
-
 
         $mylistItem = new MylistItem();
         $mylistItem->mylist_id = $mylist->id;
@@ -61,20 +63,21 @@ class MylistItemController extends Controller
         $mylistItem->item_type = $itemType;
         $mylistItem->save();
 
-
         return response()->json($mylistItem, 201);
     }
 
     /**
-     * Remove an item from a given mylist.
+     * 🇬🇧 Remove an item from a given mylist.
+     * 🇫🇷 Supprimer un élément d'une liste personnelle donnée.
      */
     public function destroy(Mylist $mylist, MylistItem $mylistItem)
     {
-
-        // Vérifier que l'item appartient bien à la liste
+        // 🇬🇧 Ensure the item belongs to the list
+        // 🇫🇷 Vérifier que l'élément appartient bien à la liste
         if ($mylistItem->mylist_id !== $mylist->id) {
             return response()->json(['error' => 'Item does not belong to this list.'], 400);
         }
+
         $mylistItem->delete();
         return response()->json(null, 204);
     }

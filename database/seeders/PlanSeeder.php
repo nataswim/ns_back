@@ -10,7 +10,7 @@ use App\Models\User;
 class PlanSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * 🇬🇧 Run the database seeds.
      */
     public function run(): void
     {

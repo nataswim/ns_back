@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Validator;
 class PageController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 🇬🇧 Display a listing of the resource.
+     * 🇫🇷 Afficher la liste des pages.
      */
     public function index()
     {
@@ -19,16 +20,17 @@ class PageController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 🇬🇧 Store a newly created resource in storage.
+     * 🇫🇷 Enregistrer une nouvelle page dans la base de données.
      */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'content' => 'required', // Ou nullable si le contenu peut être vide
-            'page_category' => 'nullable|max:255',
-            'upload_id' => 'nullable|exists:uploads,id',
-            'user_id' => 'required|exists:users,id',
+            'title' => 'required|max:255', // 🇬🇧 Title is required / 🇫🇷 Le titre est obligatoire
+            'content' => 'required', // 🇬🇧 Content is required / 🇫🇷 Le contenu est obligatoire
+            'page_category' => 'nullable|max:255', // 🇬🇧 Optional category / 🇫🇷 Catégorie facultative
+            'upload_id' => 'nullable|exists:uploads,id', // 🇬🇧 Must reference a valid upload / 🇫🇷 Doit référencer un fichier uploadé valide
+            'user_id' => 'required|exists:users,id', // 🇬🇧 Must reference a valid user / 🇫🇷 Doit référencer un utilisateur valide
         ]);
 
         if ($validator->fails()) {
@@ -40,7 +42,8 @@ class PageController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 🇬🇧 Display the specified resource.
+     * 🇫🇷 Afficher une page spécifique.
      */
     public function show(Page $page)
     {
@@ -48,16 +51,17 @@ class PageController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 🇬🇧 Update the specified resource in storage.
+     * 🇫🇷 Mettre à jour une page existante.
      */
     public function update(Request $request, Page $page)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'content' => 'required', // Ou nullable si le contenu peut être vide
-            'page_category' => 'nullable|max:255',
-            'upload_id' => 'nullable|exists:uploads,id',
-            'user_id' => 'required|exists:users,id',
+            'title' => 'required|max:255', // 🇬🇧 Title is required / 🇫🇷 Le titre est obligatoire
+            'content' => 'required', // 🇬🇧 Content is required / 🇫🇷 Le contenu est obligatoire
+            'page_category' => 'nullable|max:255', // 🇬🇧 Optional category / 🇫🇷 Catégorie facultative
+            'upload_id' => 'nullable|exists:uploads,id', // 🇬🇧 Must reference a valid upload / 🇫🇷 Doit référencer un fichier uploadé valide
+            'user_id' => 'required|exists:users,id', // 🇬🇧 Must reference a valid user / 🇫🇷 Doit référencer un utilisateur valide
         ]);
 
         if ($validator->fails()) {
@@ -69,7 +73,8 @@ class PageController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 🇬🇧 Remove the specified resource from storage.
+     * 🇫🇷 Supprimer une page spécifique de la base de données.
      */
     public function destroy(Page $page)
     {

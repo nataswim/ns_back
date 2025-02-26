@@ -10,9 +10,9 @@ class Plan extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * 🇬🇧 The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * 🇬🇧 @var array<int, string>
      */
     protected $fillable = [
         'title',
@@ -22,9 +22,9 @@ class Plan extends Model
     ];
 
     /**
-     * The attributes that should be cast.
+     * 🇬🇧 The attributes that should be cast.
      *
-     * @var array<string, string>
+     * 🇬🇧 @var array<string, string>
      */
     protected $casts = [
         'created_at' => 'datetime',
@@ -32,7 +32,7 @@ class Plan extends Model
     ];
 
     /**
-     * Get the user that created the plan.
+     * 🇬🇧 Get the user that created the plan.
      */
     public function user()
     {
@@ -40,7 +40,7 @@ class Plan extends Model
     }
 
     /**
-     * The workouts that belong to the plan.
+     * 🇬🇧 The workouts that belong to the plan.
      */
     public function workouts()
     {

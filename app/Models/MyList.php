@@ -10,9 +10,9 @@ class Mylist extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * 🇬🇧 The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * 🇬🇧 @var array<int, string>
      */
     protected $fillable = [
         'user_id',
@@ -21,9 +21,9 @@ class Mylist extends Model
     ];
 
     /**
-     * The attributes that should be cast.
+     * 🇬🇧 The attributes that should be cast.
      *
-     * @var array<string, string>
+     * 🇬🇧 @var array<string, string>
      */
     protected $casts = [
         'created_at' => 'datetime',
@@ -31,7 +31,7 @@ class Mylist extends Model
     ];
 
     /**
-     * Get the user that owns the mylist.
+     * 🇬🇧 Get the user that owns the mylist.
      */
     public function user()
     {
@@ -39,7 +39,7 @@ class Mylist extends Model
     }
 
     /**
-     * Get the items in the mylist.
+     * 🇬🇧 Get the items in the mylist.
      */
     public function mylistItems()
     {

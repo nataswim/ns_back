@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage; // Pour la gestion des fichiers
 class UploadController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 🇬🇧 Display a listing of the resource.
      */
     public function index()
     {
@@ -21,7 +21,7 @@ class UploadController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 🇬🇧 Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
@@ -54,7 +54,7 @@ class UploadController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 🇬🇧 Display the specified resource.
      */
     public function show(Upload $upload)
     {
@@ -62,7 +62,7 @@ class UploadController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 🇬🇧 Update the specified resource in storage.
      */
     public function update(Request $request, Upload $upload)
     {
@@ -86,7 +86,7 @@ class UploadController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 🇬🇧 Remove the specified resource from storage.
      */
     public function destroy(Upload $upload)
     {
@@ -97,7 +97,7 @@ class UploadController extends Controller
     }
 
     /**
-     * Get uploads by user.
+     * 🇬🇧 Get uploads by user.
      */
     public function getUserUploads(User $user)
     {

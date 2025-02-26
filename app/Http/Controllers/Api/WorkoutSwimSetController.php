@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class WorkoutSwimSetController extends Controller
 {
     /**
-     * Display a listing of the swim sets for a given workout.
+     * 🇬🇧 Display a listing of the swim sets for a given workout.
      */
     public function index(Workout $workout)
     {
@@ -19,7 +19,7 @@ class WorkoutSwimSetController extends Controller
     }
 
     /**
-     * Attach a swim set to a workout.
+     * 🇬🇧 Attach a swim set to a workout.
      */
     public function store(Request $request, Workout $workout, SwimSet $swimSet)
     {
@@ -46,7 +46,7 @@ class WorkoutSwimSetController extends Controller
     }
 
     /**
-     * Detach a swim set from a workout.
+     * 🇬🇧 Detach a swim set from a workout.
      */
     public function destroy(Workout $workout, SwimSet $swimSet)
     {

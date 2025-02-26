@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash; // Pour hasher le mot de passe
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 🇬🇧 Display a listing of the resource.
      */
     public function index()
     {
@@ -21,7 +21,7 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 🇬🇧 Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
@@ -51,7 +51,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 🇬🇧 Display the specified resource.
      */
     public function show(User $user)
     {
@@ -59,7 +59,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 🇬🇧 Update the specified resource in storage.
      */
     public function update(Request $request, User $user)
     {
@@ -93,7 +93,7 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 🇬🇧 Remove the specified resource from storage.
      */
     public function destroy(User $user)
     {
@@ -102,7 +102,7 @@ class UserController extends Controller
     }
 
     /**
-     * Get users by role.
+     * 🇬🇧 Get users by role.
      */
     public function getUsersByRole(Role $role)
     {

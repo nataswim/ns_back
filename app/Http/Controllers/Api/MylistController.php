@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Validator;
 class MylistController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 🇬🇧 Display a listing of the resource.
+     * 🇫🇷 Afficher la liste des listes personnelles.
      */
     public function index()
     {
@@ -19,7 +20,8 @@ class MylistController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 🇬🇧 Store a newly created resource in storage.
+     * 🇫🇷 Enregistrer une nouvelle liste personnelle dans la base de données.
      */
     public function store(Request $request)
     {
@@ -38,7 +40,8 @@ class MylistController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 🇬🇧 Display the specified resource.
+     * 🇫🇷 Afficher une liste personnelle spécifique.
      */
     public function show(Mylist $mylist)
     {
@@ -46,7 +49,8 @@ class MylistController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 🇬🇧 Update the specified resource in storage.
+     * 🇫🇷 Mettre à jour une liste personnelle existante.
      */
     public function update(Request $request, Mylist $mylist)
     {
@@ -65,7 +69,8 @@ class MylistController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 🇬🇧 Remove the specified resource from storage.
+     * 🇫🇷 Supprimer une liste personnelle spécifique de la base de données.
      */
     public function destroy(Mylist $mylist)
     {

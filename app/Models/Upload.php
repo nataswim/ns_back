@@ -10,9 +10,9 @@ class Upload extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * 🇬🇧 The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * 🇬🇧 @var array<int, string>
      */
     protected $fillable = [
         'filename',
@@ -22,9 +22,9 @@ class Upload extends Model
     ];
 
     /**
-     * The attributes that should be cast.
+     * 🇬🇧 The attributes that should be cast.
      *
-     * @var array<string, string>
+     * 🇬🇧 @var array<string, string>
      */
     protected $casts = [
         'created_at' => 'datetime',
@@ -32,7 +32,7 @@ class Upload extends Model
     ];
 
     /**
-     * Get the user that uploaded the file.
+     * 🇬🇧 Get the user that uploaded the file.
      */
     public function user()
     {

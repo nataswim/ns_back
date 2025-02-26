@@ -10,18 +10,18 @@ class Role extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * 🇬🇧 The attributes that are mass assignable.
      *
-     * @var array
+     * 🇬🇧 @var array
      */
     protected $fillable = [
         'name',
     ];
 
     /**
-     * The attributes that should be cast.
+     * 🇬🇧 The attributes that should be cast.
      *
-     * @var array
+     * 🇬🇧 @var array
      */
     protected $casts = [
         'created_at' => 'datetime',
@@ -29,7 +29,7 @@ class Role extends Model
     ];
 
     /**
-     * Get the users for the role.
+     * 🇬🇧 Get the users for the role.
      */
     public function users()
     {

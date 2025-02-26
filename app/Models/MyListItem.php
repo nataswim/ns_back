@@ -10,9 +10,9 @@ class MylistItem extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * 🇬🇧 The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * 🇬🇧 @var array<int, string>
      */
     protected $fillable = [
         'mylist_id',
@@ -21,16 +21,16 @@ class MylistItem extends Model
     ];
 
     /**
-     * The attributes that should be cast.
+     * 🇬🇧 The attributes that should be cast.
      *
-     * @var array<string, string>
+     * 🇬🇧 @var array<string, string>
      */
     protected $casts = [
         'created_at' => 'datetime',
     ];
 
     /**
-     * Get the mylist that the item belongs to.
+     * 🇬🇧 Get the mylist that the item belongs to.
      */
     public function mylist()
     {
@@ -39,7 +39,7 @@ class MylistItem extends Model
 
     // Les relations polymorphiques seront définies ici (voir explication plus bas)
     /**
-     * Get the item (exercise, workout, or plan).
+     * 🇬🇧 Get the item (exercise, workout, or plan).
      */
     public function item()
     {

@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\DB;
 class PlanWorkoutSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * 🇬🇧 Run the database seeds.
      *
-     * @return void
+     * 🇬🇧 @return void
      */
     public function run()
     {

@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Validator;
 class PlanWorkoutController extends Controller
 {
     /**
-     * Display a listing of the workouts for a given plan.
+     * 🇬🇧 Display a listing of the workouts for a given plan.
+     * 🇫🇷 Afficher la liste des séances d'entraînement associées à un plan donné.
      */
     public function index(Plan $plan)
     {
@@ -19,24 +20,27 @@ class PlanWorkoutController extends Controller
     }
 
     /**
-     * Attach a workout to a plan.
+     * 🇬🇧 Attach a workout to a plan.
+     * 🇫🇷 Associer une séance d'entraînement à un plan.
      */
     public function store(Request $request, Plan $plan, Workout $workout)
     {
-        // Validation pour la méthode store 
+        // 🇬🇧 Validation for attaching a workout to a plan
+        // 🇫🇷 Validation pour associer une séance d'entraînement à un plan
         $validator = Validator::make([
             'plan_id' => $plan->id,
             'workout_id' => $workout->id,
         ], [
-            'plan_id' => 'exists:plans,id',
-            'workout_id' => 'exists:workouts,id',
+            'plan_id' => 'exists:plans,id', // 🇬🇧 Must be a valid plan ID / 🇫🇷 Doit être un ID de plan valide
+            'workout_id' => 'exists:workouts,id', // 🇬🇧 Must be a valid workout ID / 🇫🇷 Doit être un ID de séance valide
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        // Vérifier si l'association existe déjà
+        // 🇬🇧 Check if the workout is already attached
+        // 🇫🇷 Vérifier si la séance est déjà associée
         if ($plan->workouts()->where('workout_id', $workout->id)->exists()) {
             return response()->json(['error' => 'Workout already attached to this plan.'], 400);
         }
@@ -46,11 +50,13 @@ class PlanWorkoutController extends Controller
     }
 
     /**
-     * Detach a workout from a plan.
+     * 🇬🇧 Detach a workout from a plan.
+     * 🇫🇷 Détacher une séance d'entraînement d'un plan.
      */
     public function destroy(Plan $plan, Workout $workout)
     {
-        // Vérifier si l'association existe avant suppression 
+        // 🇬🇧 Check if the workout is attached before detaching
+        // 🇫🇷 Vérifier si la séance est associée avant de la détacher
         if (!$plan->workouts()->where('workout_id', $workout->id)->exists()) {
             return response()->json(['error' => 'Workout is not attached to this plan.'], 400);
         }
@@ -60,10 +66,13 @@ class PlanWorkoutController extends Controller
     }
 
     /**
-     * la méthode show 
+     * 🇬🇧 Display a specific workout within a plan.
+     * 🇫🇷 Afficher une séance spécifique dans un plan.
      */
     public function show(Plan $plan, Workout $workout)
     {
+        // 🇬🇧 Check if the plan contains the workout
+        // 🇫🇷 Vérifier si le plan contient la séance d'entraînement
         if ($plan->workouts->contains($workout)) {
             return response()->json($workout, 200);
         } else {
