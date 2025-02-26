@@ -5,14 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * 🇬🇧 Exercise model representing a training exercise.
+ * 🇫🇷 Modèle Exercise représentant un exercice d'entraînement.
+ */
 class Exercise extends Model
 {
     use HasFactory;
 
     /**
      * 🇬🇧 The attributes that are mass assignable.
+     * 🇫🇷 Les attributs qui peuvent être assignés en masse.
      *
-     * 🇬🇧 @var array<int, string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'title',
@@ -25,8 +30,9 @@ class Exercise extends Model
 
     /**
      * 🇬🇧 The attributes that should be cast.
+     * 🇫🇷 Les attributs qui doivent être typés.
      *
-     * 🇬🇧 @var array<string, string>
+     * @var array<string, string>
      */
     protected $casts = [
         'created_at' => 'datetime',
@@ -35,6 +41,7 @@ class Exercise extends Model
 
     /**
      * 🇬🇧 Get the user that created the exercise.
+     * 🇫🇷 Récupérer l'utilisateur qui a créé l'exercice.
      */
     public function user()
     {
@@ -43,6 +50,7 @@ class Exercise extends Model
 
     /**
      * 🇬🇧 Get the upload associated with the exercise.
+     * 🇫🇷 Récupérer le fichier associé à l'exercice.
      */
     public function upload()
     {
@@ -51,6 +59,7 @@ class Exercise extends Model
 
     /**
      * 🇬🇧 Get the swim sets for the exercise.
+     * 🇫🇷 Récupérer les séries de natation associées à l'exercice.
      */
     public function swimSets()
     {
@@ -59,13 +68,19 @@ class Exercise extends Model
 
     /**
      * 🇬🇧 The workouts that belong to the exercise.
+     * 🇫🇷 Les séances d'entraînement associées à l'exercice.
      */
     public function workouts()
     {
         return $this->belongsToMany(Workout::class, 'workout_exercises');
     }
+
+    /**
+     * 🇬🇧 Get the mylist items associated with this exercise.
+     * 🇫🇷 Récupérer les éléments de liste personnelle associés à cet exercice.
+     */
     public function mylistItems()
-{
-    return $this->morphMany(MylistItem::class, 'item');
-}
+    {
+        return $this->morphMany(MylistItem::class, 'item');
+    }
 }

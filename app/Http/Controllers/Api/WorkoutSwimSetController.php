@@ -12,6 +12,7 @@ class WorkoutSwimSetController extends Controller
 {
     /**
      * 🇬🇧 Display a listing of the swim sets for a given workout.
+     * 🇫🇷 Afficher la liste des séries de natation associées à une séance d'entraînement donnée.
      */
     public function index(Workout $workout)
     {
@@ -20,23 +21,26 @@ class WorkoutSwimSetController extends Controller
 
     /**
      * 🇬🇧 Attach a swim set to a workout.
+     * 🇫🇷 Associer une série de natation à une séance d'entraînement.
      */
     public function store(Request $request, Workout $workout, SwimSet $swimSet)
     {
-        // Validation explicite
+        // 🇬🇧 Explicit validation
+        // 🇫🇷 Validation explicite
         $validator = Validator::make([
             'workout_id' => $workout->id,
             'swim_set_id' => $swimSet->id,
         ], [
-            'workout_id' => 'exists:workouts,id',
-            'swim_set_id' => 'exists:swim_sets,id',
+            'workout_id' => 'exists:workouts,id', // 🇬🇧 Must be a valid workout ID / 🇫🇷 Doit être un ID de séance valide
+            'swim_set_id' => 'exists:swim_sets,id', // 🇬🇧 Must be a valid swim set ID / 🇫🇷 Doit être un ID de série valide
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        // Vérifier si l'association existe déjà
+        // 🇬🇧 Check if the association already exists
+        // 🇫🇷 Vérifier si l'association existe déjà
         if ($workout->swimSets()->where('swim_set_id', $swimSet->id)->exists()) {
             return response()->json(['error' => 'Swim set already attached to this workout.'], 400);
         }
@@ -47,10 +51,12 @@ class WorkoutSwimSetController extends Controller
 
     /**
      * 🇬🇧 Detach a swim set from a workout.
+     * 🇫🇷 Détacher une série de natation d'une séance d'entraînement.
      */
     public function destroy(Workout $workout, SwimSet $swimSet)
     {
-        // Vérifier si l'association existe avant de détacher
+        // 🇬🇧 Check if the association exists before detaching
+        // 🇫🇷 Vérifier si l'association existe avant de détacher
         if (!$workout->swimSets()->where('swim_set_id', $swimSet->id)->exists()) {
             return response()->json(['error' => 'Swim set is not attached to this workout.'], 400);
         }

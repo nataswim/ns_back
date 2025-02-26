@@ -11,6 +11,7 @@ class WorkoutController extends Controller
 {
     /**
      * 🇬🇧 Display a listing of the resource.
+     * 🇫🇷 Afficher la liste des séances d'entraînement.
      */
     public function index()
     {
@@ -20,14 +21,17 @@ class WorkoutController extends Controller
 
     /**
      * 🇬🇧 Store a newly created resource in storage.
+     * 🇫🇷 Enregistrer une nouvelle séance d'entraînement dans la base de données.
      */
     public function store(Request $request)
     {
+        // 🇬🇧 Validate the request data
+        // 🇫🇷 Valider les données de la requête
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'description' => 'nullable',
-            'workout_category' => 'nullable|max:255',
-            'user_id' => 'required|exists:users,id',
+            'title' => 'required|max:255', // 🇬🇧 Title is required / 🇫🇷 Le titre est obligatoire
+            'description' => 'nullable', // 🇬🇧 Description is optional / 🇫🇷 La description est facultative
+            'workout_category' => 'nullable|max:255', // 🇬🇧 Category is optional / 🇫🇷 La catégorie est facultative
+            'user_id' => 'required|exists:users,id', // 🇬🇧 Must reference a valid user / 🇫🇷 Doit référencer un utilisateur valide
         ]);
 
         if ($validator->fails()) {
@@ -40,6 +44,7 @@ class WorkoutController extends Controller
 
     /**
      * 🇬🇧 Display the specified resource.
+     * 🇫🇷 Afficher une séance d'entraînement spécifique.
      */
     public function show(Workout $workout)
     {
@@ -48,14 +53,17 @@ class WorkoutController extends Controller
 
     /**
      * 🇬🇧 Update the specified resource in storage.
+     * 🇫🇷 Mettre à jour une séance d'entraînement existante.
      */
     public function update(Request $request, Workout $workout)
     {
+        // 🇬🇧 Validate the update request
+        // 🇫🇷 Valider la requête de mise à jour
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'description' => 'nullable',
-            'workout_category' => 'nullable|max:255',
-            'user_id' => 'required|exists:users,id',
+            'title' => 'required|max:255', // 🇬🇧 Title is required / 🇫🇷 Le titre est obligatoire
+            'description' => 'nullable', // 🇬🇧 Description is optional / 🇫🇷 La description est facultative
+            'workout_category' => 'nullable|max:255', // 🇬🇧 Category is optional / 🇫🇷 La catégorie est facultative
+            'user_id' => 'required|exists:users,id', // 🇬🇧 Must reference a valid user / 🇫🇷 Doit référencer un utilisateur valide
         ]);
 
         if ($validator->fails()) {
@@ -68,6 +76,7 @@ class WorkoutController extends Controller
 
     /**
      * 🇬🇧 Remove the specified resource from storage.
+     * 🇫🇷 Supprimer une séance d'entraînement spécifique de la base de données.
      */
     public function destroy(Workout $workout)
     {

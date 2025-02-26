@@ -5,14 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * 🇬🇧 MylistItem model representing an item in a personal list.
+ * 🇫🇷 Modèle MylistItem représentant un élément d'une liste personnelle.
+ */
 class MylistItem extends Model
 {
     use HasFactory;
 
     /**
      * 🇬🇧 The attributes that are mass assignable.
+     * 🇫🇷 Les attributs qui peuvent être assignés en masse.
      *
-     * 🇬🇧 @var array<int, string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'mylist_id',
@@ -22,8 +27,9 @@ class MylistItem extends Model
 
     /**
      * 🇬🇧 The attributes that should be cast.
+     * 🇫🇷 Les attributs qui doivent être typés.
      *
-     * 🇬🇧 @var array<string, string>
+     * @var array<string, string>
      */
     protected $casts = [
         'created_at' => 'datetime',
@@ -31,15 +37,16 @@ class MylistItem extends Model
 
     /**
      * 🇬🇧 Get the mylist that the item belongs to.
+     * 🇫🇷 Récupérer la liste personnelle à laquelle appartient l'élément.
      */
     public function mylist()
     {
         return $this->belongsTo(Mylist::class);
     }
 
-    // Les relations polymorphiques seront définies ici (voir explication plus bas)
     /**
      * 🇬🇧 Get the item (exercise, workout, or plan).
+     * 🇫🇷 Récupérer l'élément associé (exercice, séance d'entraînement ou plan).
      */
     public function item()
     {

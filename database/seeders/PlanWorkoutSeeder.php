@@ -6,82 +6,80 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * 🇬🇧 PlanWorkoutSeeder class for populating the "plan_workouts" pivot table.
+ * 🇫🇷 Classe PlanWorkoutSeeder pour le peuplement de la table pivot "plan_workouts".
+ */
 class PlanWorkoutSeeder extends Seeder
 {
     /**
      * 🇬🇧 Run the database seeds.
+     * 🇫🇷 Exécuter le peuplement de la base de données.
      *
-     * 🇬🇧 @return void
+     * @return void
      */
     public function run()
     {
-        // Associer un plan à une séance 
+        // 🇬🇧 Associate plans with workouts.
+        // 🇫🇷 Associer des plans à des séances d'entraînement.
         DB::table('plan_workouts')->insert([
             'plan_id' => 1,
             'workout_id' => 1,
         ]);
 
-        // Associer un plan à une séance 
         DB::table('plan_workouts')->insert([
             'plan_id' => 2,
             'workout_id' => 2,
         ]);
 
-        // Associer un plan à une séance 
         DB::table('plan_workouts')->insert([
             'plan_id' => 3,
             'workout_id' => 3,
         ]);
-                // Associer un plan à une séance 
-                DB::table('plan_workouts')->insert([
-                    'plan_id' => 4,
-                    'workout_id' => 4,
-                ]);
-        
-                // Associer un plan à une séance 
-                DB::table('plan_workouts')->insert([
-                    'plan_id' => 5,
-                    'workout_id' => 5,
-                ]);
-        
-                // Associer un plan à une séance 
-                DB::table('plan_workouts')->insert([
-                    'plan_id' => 6,
-                    'workout_id' => 6,
-                ]);
-                        // Associer un plan à une séance 
+
+        DB::table('plan_workouts')->insert([
+            'plan_id' => 4,
+            'workout_id' => 4,
+        ]);
+
+        DB::table('plan_workouts')->insert([
+            'plan_id' => 5,
+            'workout_id' => 5,
+        ]);
+
+        DB::table('plan_workouts')->insert([
+            'plan_id' => 6,
+            'workout_id' => 6,
+        ]);
+
         DB::table('plan_workouts')->insert([
             'plan_id' => 7,
             'workout_id' => 7,
         ]);
 
-        // Associer un plan à une séance 
         DB::table('plan_workouts')->insert([
             'plan_id' => 8,
             'workout_id' => 8,
         ]);
 
-        // Associer un plan à une séance 
         DB::table('plan_workouts')->insert([
             'plan_id' => 9,
             'workout_id' => 9,
         ]);
-                // Associer un plan à une séance 
-                DB::table('plan_workouts')->insert([
-                    'plan_id' => 10,
-                    'workout_id' => 10,
-                ]);
-        
-                // Associer un plan à une séance 
-                DB::table('plan_workouts')->insert([
-                    'plan_id' => 11,
-                    'workout_id' => 11,
-                ]);
-        
-                // Associer un plan à une séance 
-                DB::table('plan_workouts')->insert([
-                    'plan_id' => 12,
-                    'workout_id' => 12,
-                ]);
+
+        DB::table('plan_workouts')->insert([
+            'plan_id' => 10,
+            'workout_id' => 10,
+        ]);
+
+        DB::table('plan_workouts')->insert([
+            'plan_id' => 11,
+            'workout_id' => 11,
+        ]);
+
+        DB::table('plan_workouts')->insert([
+            'plan_id' => 12,
+            'workout_id' => 12,
+        ]);
     }
 }

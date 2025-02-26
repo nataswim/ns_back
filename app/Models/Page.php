@@ -5,14 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * 🇬🇧 Page model representing a content page in the system.
+ * 🇫🇷 Modèle Page représentant une page de contenu dans le système.
+ */
 class Page extends Model
 {
     use HasFactory;
 
     /**
      * 🇬🇧 The attributes that are mass assignable.
+     * 🇫🇷 Les attributs qui peuvent être assignés en masse.
      *
-     * 🇬🇧 @var array<int, string>
+     * @var array<int, string>
      */
     protected $fillable = [
         'title',
@@ -24,8 +29,9 @@ class Page extends Model
 
     /**
      * 🇬🇧 The attributes that should be cast.
+     * 🇫🇷 Les attributs qui doivent être typés.
      *
-     * 🇬🇧 @var array<string, string>
+     * @var array<string, string>
      */
     protected $casts = [
         'created_at' => 'datetime',
@@ -34,6 +40,7 @@ class Page extends Model
 
     /**
      * 🇬🇧 Get the user that created the page.
+     * 🇫🇷 Récupérer l'utilisateur qui a créé la page.
      */
     public function user()
     {
@@ -42,6 +49,7 @@ class Page extends Model
 
     /**
      * 🇬🇧 Get the upload associated with the page.
+     * 🇫🇷 Récupérer le fichier associé à la page.
      */
     public function upload()
     {
