@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class SwimSetController extends Controller
 {
     /**
-     * 🇬🇧 Display a listing of the resource.
-     * 🇫🇷 Afficher la liste des séries de natation.
+     * Display a listing of the resource.
      */
     public function index()
     {
@@ -20,32 +19,28 @@ class SwimSetController extends Controller
     }
 
     /**
-     * 🇬🇧 Store a newly created resource in storage.
-     * 🇫🇷 Enregistrer une nouvelle série de natation dans la base de données.
+     * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        // 🇬🇧 Validate the request data
-        // 🇫🇷 Valider les données de la requête
         $validator = Validator::make($request->all(), [
-            'workout_id' => 'nullable|exists:workouts,id', // 🇬🇧 Must reference a valid workout / 🇫🇷 Doit référencer une séance valide
-            'exercise_id' => 'nullable|exists:exercises,id', // 🇬🇧 Must reference a valid exercise / 🇫🇷 Doit référencer un exercice valide
-            'set_distance' => 'nullable|integer', // 🇬🇧 Distance must be an integer / 🇫🇷 La distance doit être un entier
-            'set_repetition' => 'nullable|integer', // 🇬🇧 Repetitions must be an integer / 🇫🇷 Le nombre de répétitions doit être un entier
-            'rest_time' => 'nullable|integer', // 🇬🇧 Rest time must be an integer / 🇫🇷 Le temps de repos doit être un entier
+            'workout_id' => 'required|exists:workouts,id',
+            'exercise_id' => 'required|exists:exercises,id',
+            'set_distance' => 'required|integer|min:1',
+            'set_repetition' => 'nullable|integer|min:1',
+            'rest_time' => 'nullable|integer|min:0',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $swimSet = SwimSet::create($request->validated());
+        $swimSet = SwimSet::create($validator->validated());
         return response()->json($swimSet, 201);
     }
 
     /**
-     * 🇬🇧 Display the specified resource.
-     * 🇫🇷 Afficher une série de natation spécifique.
+     * Display the specified resource.
      */
     public function show(SwimSet $swimSet)
     {
@@ -53,32 +48,30 @@ class SwimSetController extends Controller
     }
 
     /**
-     * 🇬🇧 Update the specified resource in storage.
-     * 🇫🇷 Mettre à jour une série de natation existante.
+     * Update the specified resource in storage.
      */
-    public function update(Request $request, SwimSet $swimSet)
+    public function update(Request $request, $id)
     {
-        // 🇬🇧 Validate the request data
-        // 🇫🇷 Valider les données de la requête
+        $swimSet = SwimSet::findOrFail($id);
+        
         $validator = Validator::make($request->all(), [
-            'workout_id' => 'nullable|exists:workouts,id', // 🇬🇧 Must reference a valid workout / 🇫🇷 Doit référencer une séance valide
-            'exercise_id' => 'nullable|exists:exercises,id', // 🇬🇧 Must reference a valid exercise / 🇫🇷 Doit référencer un exercice valide
-            'set_distance' => 'nullable|integer', // 🇬🇧 Distance must be an integer / 🇫🇷 La distance doit être un entier
-            'set_repetition' => 'nullable|integer', // 🇬🇧 Repetitions must be an integer / 🇫🇷 Le nombre de répétitions doit être un entier
-            'rest_time' => 'nullable|integer', // 🇬🇧 Rest time must be an integer / 🇫🇷 Le temps de repos doit être un entier
+            'workout_id' => 'required|exists:workouts,id',
+            'exercise_id' => 'required|exists:exercises,id',
+            'set_distance' => 'required|integer|min:1',
+            'set_repetition' => 'nullable|integer|min:1',
+            'rest_time' => 'nullable|integer|min:0',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $swimSet->update($request->validated());
+        $swimSet->update($validator->validated());
         return response()->json($swimSet, 200);
     }
 
     /**
-     * 🇬🇧 Remove the specified resource from storage.
-     * 🇫🇷 Supprimer une série de natation spécifique de la base de données.
+     * Remove the specified resource from storage.
      */
     public function destroy(SwimSet $swimSet)
     {

@@ -10,10 +10,8 @@ use Illuminate\Support\Facades\Validator;
 class ExerciseController extends Controller
 {
     /**
-     * 🇬🇧 Display a listing of the resource.
-     * 🇫🇷 Afficher la liste des exercices.
+     * Display a listing of the resource.
      */
-
     public function index()
     {
         $exercises = Exercise::all();
@@ -21,8 +19,7 @@ class ExerciseController extends Controller
     }
 
     /**
-     * 🇬🇧 Store a newly created resource in storage.
-     * 🇫🇷 Enregistrer une nouvelle ressource dans la base de données
+     * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
@@ -39,13 +36,12 @@ class ExerciseController extends Controller
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $exercise = Exercise::create($request->validated());
+        $exercise = Exercise::create($validator->validated());
         return response()->json($exercise, 201);
     }
 
     /**
-     * 🇬🇧 Display the specified resource.
-     * 🇫🇷 Afficher une ressource spécifique.
+     * Display the specified resource.
      */
     public function show(Exercise $exercise)
     {
@@ -53,11 +49,12 @@ class ExerciseController extends Controller
     }
 
     /**
-     * 🇬🇧 Update the specified resource in storage.
-     * 🇫🇷 Mettre à jour une ressource existante
+     * Update the specified resource in storage.
      */
-    public function update(Request $request, Exercise $exercise)
+    public function update(Request $request, $id)
     {
+        $exercise = Exercise::findOrFail($id);
+
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'description' => 'nullable',
@@ -71,13 +68,12 @@ class ExerciseController extends Controller
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $exercise->update($request->validated());
+        $exercise->update($validator->validated());
         return response()->json($exercise, 200);
     }
 
     /**
-     * 🇬🇧 Remove the specified resource from storage.
-     * 🇫🇷 Supprimer une ressource spécifique de la base de données.
+     * Remove the specified resource from storage.
      */
     public function destroy(Exercise $exercise)
     {

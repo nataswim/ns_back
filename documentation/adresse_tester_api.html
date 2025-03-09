@@ -1,0 +1,183 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentation API</title>
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #0d47a1;
+            --accent-color: #2962ff;
+            --code-bg: #f5f5f5;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-top: 2em;
+        }
+        h4 {
+            color: #6d7786;
+            margin-top: 2em;
+        }
+
+        h1 { border-bottom: 3px solid var(--accent-color); padding-bottom: 10px; }
+        
+        hassan {
+            background: #e7fbec;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Consolas', monospace;
+        }
+        pre {
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #4caf50;
+        }
+
+        .note, .warning, .tip {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .note {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+
+        .warning {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+        }
+
+        .tip {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+
+        .command {
+            background: #212121;
+            color: #fff;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .method {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .get { background: #4caf50; color: white; }
+        .post { background: #2196f3; color: white; }
+        .put { background: #ff9800; color: white; }
+        .delete { background: #f44336; color: white; }
+    </style>
+</head>
+<body>
+ 
+<h3>🔑 <strong>Authentification</strong></h3>
+<ul>
+<li>GET<a>http://127.0.0.1:8000/api/user</a><em>(requiert une authentification)</em></li>
+</ul>
+<h3>🛠 <strong>R&ocirc;les</strong></h3>
+<ul>
+<li>GET|POST|PUT|DELETE<a>http://127.0.0.1:8000/api/roles</a></li>
+<li>GET|PUT|DELETE<a>http://127.0.0.1:8000/api/roles/{role}</a></li>
+<li>GET<a>http://127.0.0.1:8000/api/roles/{role}/users</a></li>
+</ul>
+<h3>👤 <strong>Utilisateurs</strong></h3>
+<ul>
+<li>GET|POST|PUT|DELETE<a>http://127.0.0.1:8000/api/users</a></li>
+<li>GET|PUT|DELETE<a>http://127.0.0.1:8000/api/users/{user}</a></li>
+</ul>
+<h3>📂 <strong>Uploads</strong></h3>
+<ul>
+<li>GET|POST|PUT|DELETE<a>http://127.0.0.1:8000/api/uploads</a></li>
+<li>GET|PUT|DELETE<a>http://127.0.0.1:8000/api/uploads/{upload}</a></li>
+<li>GET<a>http://127.0.0.1:8000/api/users/{user}/uploads</a></li>
+</ul>
+<h3>📄 <strong>Pages</strong></h3>
+<ul>
+<li>GET|POST|PUT|DELETE<a>http://127.0.0.1:8000/api/pages</a></li>
+<li>GET|PUT|DELETE<a>http://127.0.0.1:8000/api/pages/{page}</a></li>
+</ul>
+<h3>🏋️ <strong>Exercices</strong></h3>
+<ul>
+<li>GET|POST|PUT|DELETE<a>http://127.0.0.1:8000/api/exercises</a></li>
+<li>GET|PUT|DELETE<a>http://127.0.0.1:8000/api/exercises/{exercise}</a></li>
+</ul>
+<h3>📅 <strong>Plans</strong></h3>
+<ul>
+<li>GET|POST|PUT|DELETE<a>http://127.0.0.1:8000/api/plans</a></li>
+<li>GET|PUT|DELETE<a>http://127.0.0.1:8000/api/plans/{plan}</a></li>
+<li>GET<a>http://127.0.0.1:8000/api/plans/{plan}/workouts</a></li>
+<li>POST<a>http://127.0.0.1:8000/api/plans/{plan}/workouts/{workout}</a></li>
+<li>DELETE<a>http://127.0.0.1:8000/api/plans/{plan}/workouts/{workout}</a></li>
+<li>GET<a>http://127.0.0.1:8000/api/plans/{plan}/workouts/{workout}</a></li>
+</ul>
+<h3>🏃 <strong>Workouts</strong></h3>
+<ul>
+<li>GET|POST|PUT|DELETE<a>http://127.0.0.1:8000/api/workouts</a></li>
+<li>GET|PUT|DELETE<a>http://127.0.0.1:8000/api/workouts/{workout}</a></li>
+<li>GET<a>http://127.0.0.1:8000/api/workouts/{workout}/exercises</a></li>
+<li>POST<a>http://127.0.0.1:8000/api/workouts/{workout}/exercises/{exercise}</a></li>
+<li>DELETE<a>http://127.0.0.1:8000/api/workouts/{workout}/exercises/{exercise}</a></li>
+<li>GET<a>http://127.0.0.1:8000/api/workouts/{workout}/swim-sets</a></li>
+<li>POST<a>http://127.0.0.1:8000/api/workouts/{workout}/swim-sets/{swimSet}</a></li>
+<li>DELETE<a>http://127.0.0.1:8000/api/workouts/{workout}/swim-sets/{swimSet}</a></li>
+</ul>
+<h3>🏊 <strong>Swim Sets</strong></h3>
+<ul>
+<li>GET|POST|PUT|DELETE<a>http://127.0.0.1:8000/api/swim-sets</a></li>
+<li>GET|PUT|DELETE<a>http://127.0.0.1:8000/api/swim-sets/{swimSet}</a></li>
+</ul>
+<h3>📋 <strong>Listes personnelles</strong></h3>
+<ul>
+<li>GET|POST|PUT|DELETE<a>http://127.0.0.1:8000/api/mylists</a></li>
+<li>GET|PUT|DELETE<a>http://127.0.0.1:8000/api/mylists/{mylist}</a></li>
+<li>GET<a>http://127.0.0.1:8000/api/mylist/{mylist}/items</a></li>
+<li>POST<a>http://127.0.0.1:8000/api/mylist/{mylist}/items</a></li>
+<li>DELETE<a>http://127.0.0.1:8000/api/mylist/{mylist}/items/{item}</a></li>
+</ul>
+
+
+
+
+
+</body>
+</html>
+
+

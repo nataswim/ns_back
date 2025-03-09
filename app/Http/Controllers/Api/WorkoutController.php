@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class WorkoutController extends Controller
 {
     /**
-     * 🇬🇧 Display a listing of the resource.
-     * 🇫🇷 Afficher la liste des séances d'entraînement.
+     * Display a listing of the resource.
      */
     public function index()
     {
@@ -20,31 +19,27 @@ class WorkoutController extends Controller
     }
 
     /**
-     * 🇬🇧 Store a newly created resource in storage.
-     * 🇫🇷 Enregistrer une nouvelle séance d'entraînement dans la base de données.
+     * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        // 🇬🇧 Validate the request data
-        // 🇫🇷 Valider les données de la requête
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255', // 🇬🇧 Title is required / 🇫🇷 Le titre est obligatoire
-            'description' => 'nullable', // 🇬🇧 Description is optional / 🇫🇷 La description est facultative
-            'workout_category' => 'nullable|max:255', // 🇬🇧 Category is optional / 🇫🇷 La catégorie est facultative
-            'user_id' => 'required|exists:users,id', // 🇬🇧 Must reference a valid user / 🇫🇷 Doit référencer un utilisateur valide
+            'title' => 'required|max:255',
+            'description' => 'nullable',
+            'workout_category' => 'nullable|max:255',
+            'user_id' => 'required|exists:users,id',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $workout = Workout::create($request->validated());
+        $workout = Workout::create($validator->validated());
         return response()->json($workout, 201);
     }
 
     /**
-     * 🇬🇧 Display the specified resource.
-     * 🇫🇷 Afficher une séance d'entraînement spécifique.
+     * Display the specified resource.
      */
     public function show(Workout $workout)
     {
@@ -52,35 +47,59 @@ class WorkoutController extends Controller
     }
 
     /**
-     * 🇬🇧 Update the specified resource in storage.
-     * 🇫🇷 Mettre à jour une séance d'entraînement existante.
+     * Update the specified resource in storage.
      */
-    public function update(Request $request, Workout $workout)
+    public function update(Request $request, $id)
     {
-        // 🇬🇧 Validate the update request
-        // 🇫🇷 Valider la requête de mise à jour
+        $workout = Workout::findOrFail($id);
+        
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255', // 🇬🇧 Title is required / 🇫🇷 Le titre est obligatoire
-            'description' => 'nullable', // 🇬🇧 Description is optional / 🇫🇷 La description est facultative
-            'workout_category' => 'nullable|max:255', // 🇬🇧 Category is optional / 🇫🇷 La catégorie est facultative
-            'user_id' => 'required|exists:users,id', // 🇬🇧 Must reference a valid user / 🇫🇷 Doit référencer un utilisateur valide
+            'title' => 'required|max:255',
+            'description' => 'nullable',
+            'workout_category' => 'nullable|max:255',
+            'user_id' => 'required|exists:users,id',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $workout->update($request->validated());
+        $workout->update($validator->validated());
         return response()->json($workout, 200);
     }
 
     /**
-     * 🇬🇧 Remove the specified resource from storage.
-     * 🇫🇷 Supprimer une séance d'entraînement spécifique de la base de données.
+     * Remove the specified resource from storage.
      */
     public function destroy(Workout $workout)
     {
         $workout->delete();
+        return response()->json(null, 204);
+    }
+
+    /**
+     * Get exercises for a workout.
+     */
+    public function getExercises(Workout $workout)
+    {
+        return response()->json($workout->exercises, 200);
+    }
+
+    /**
+     * Add exercise to workout.
+     */
+    public function addExercise(Workout $workout, $exerciseId)
+    {
+        $workout->exercises()->attach($exerciseId);
+        return response()->json(['message' => 'Exercise added successfully'], 201);
+    }
+
+    /**
+     * Remove exercise from workout.
+     */
+    public function removeExercise(Workout $workout, $exerciseId)
+    {
+        $workout->exercises()->detach($exerciseId);
         return response()->json(null, 204);
     }
 }

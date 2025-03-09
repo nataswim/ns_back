@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class PlanController extends Controller
 {
     /**
-     * 🇬🇧 Display a listing of the resource.
-     * 🇫🇷 Afficher la liste des plans d'entraînement.
+     * Display a listing of the resource.
      */
     public function index()
     {
@@ -20,29 +19,27 @@ class PlanController extends Controller
     }
 
     /**
-     * 🇬🇧 Store a newly created resource in storage.
-     * 🇫🇷 Enregistrer un nouveau plan d'entraînement dans la base de données.
+     * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255', // 🇬🇧 Title is required / 🇫🇷 Le titre est obligatoire
-            'description' => 'nullable', // 🇬🇧 Description is optional / 🇫🇷 La description est facultative
-            'plan_category' => 'nullable|max:255', // 🇬🇧 Category is optional / 🇫🇷 La catégorie est facultative
-            'user_id' => 'required|exists:users,id', // 🇬🇧 Must reference a valid user / 🇫🇷 Doit référencer un utilisateur valide
+            'title' => 'required|max:255',
+            'description' => 'nullable',
+            'plan_category' => 'nullable|max:255',
+            'user_id' => 'required|exists:users,id',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $plan = Plan::create($request->validated());
+        $plan = Plan::create($validator->validated());
         return response()->json($plan, 201);
     }
 
     /**
-     * 🇬🇧 Display the specified resource.
-     * 🇫🇷 Afficher un plan d'entraînement spécifique.
+     * Display the specified resource.
      */
     public function show(Plan $plan)
     {
@@ -50,33 +47,59 @@ class PlanController extends Controller
     }
 
     /**
-     * 🇬🇧 Update the specified resource in storage.
-     * 🇫🇷 Mettre à jour un plan d'entraînement existant.
+     * Update the specified resource in storage.
      */
-    public function update(Request $request, Plan $plan)
+    public function update(Request $request, $id)
     {
+        $plan = Plan::findOrFail($id);
+        
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255', // 🇬🇧 Title is required / 🇫🇷 Le titre est obligatoire
-            'description' => 'nullable', // 🇬🇧 Description is optional / 🇫🇷 La description est facultative
-            'plan_category' => 'nullable|max:255', // 🇬🇧 Category is optional / 🇫🇷 La catégorie est facultative
-            'user_id' => 'required|exists:users,id', // 🇬🇧 Must reference a valid user / 🇫🇷 Doit référencer un utilisateur valide
+            'title' => 'required|max:255',
+            'description' => 'nullable',
+            'plan_category' => 'nullable|max:255',
+            'user_id' => 'required|exists:users,id',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $plan->update($request->validated());
+        $plan->update($validator->validated());
         return response()->json($plan, 200);
     }
 
     /**
-     * 🇬🇧 Remove the specified resource from storage.
-     * 🇫🇷 Supprimer un plan d'entraînement spécifique de la base de données.
+     * Remove the specified resource from storage.
      */
     public function destroy(Plan $plan)
     {
         $plan->delete();
+        return response()->json(null, 204);
+    }
+
+    /**
+     * Get workouts for a plan.
+     */
+    public function getWorkouts(Plan $plan)
+    {
+        return response()->json($plan->workouts, 200);
+    }
+
+    /**
+     * Add workout to plan.
+     */
+    public function addWorkout(Plan $plan, $workoutId)
+    {
+        $plan->workouts()->attach($workoutId);
+        return response()->json(['message' => 'Workout added successfully'], 201);
+    }
+
+    /**
+     * Remove workout from plan.
+     */
+    public function removeWorkout(Plan $plan, $workoutId)
+    {
+        $plan->workouts()->detach($workoutId);
         return response()->json(null, 204);
     }
 }
