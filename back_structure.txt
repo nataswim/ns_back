@@ -1,0 +1,111 @@
+
+├── app
+│   ├── Http
+│   │   └── Controllers
+│   │       ├── .DS_Store
+│   │       ├── Api
+│   │       │   ├── ExerciseController.php
+│   │       │   ├── MylistController.php
+│   │       │   ├── MylistItemController.php
+│   │       │   ├── PageController.php
+│   │       │   ├── PlanController.php
+│   │       │   ├── PlanWorkoutController.php
+│   │       │   ├── RoleController.php
+│   │       │   ├── SwimSetController.php
+│   │       │   ├── UploadController.php
+│   │       │   ├── UserController.php
+│   │       │   ├── WorkoutController.php
+│   │       │   ├── WorkoutExerciseController.php
+│   │       │   └── WorkoutSwimSetController.php
+│   ├── Models
+│   │   ├── Exercise.php
+│   │   ├── MyList.php
+│   │   ├── MyListItem.php
+│   │   ├── Page.php
+│   │   ├── Plan.php
+│   │   ├── PlanWorkout.php
+│   │   ├── Role.php
+│   │   ├── SwimSet.php
+│   │   ├── Upload.php
+│   │   ├── User.php
+│   │   ├── Workout.php
+│   │   ├── WorkoutExercise.php
+│   │   └── WorkoutSwimSet.php
+│   └── Providers
+│       └── AppServiceProvider.php
+├── bootstrap
+│   ├── app.php
+│   ├── cache
+│   │   ├── .gitignore
+│   │   ├── packages.php
+│   │   └── services.php
+│   └── providers.php
+├── composer.json
+├── composer.lock
+├── config
+│   ├── app.php
+│   ├── auth.php
+│   ├── cache.php
+│   ├── database.php
+│   ├── filesystems.php
+│   ├── logging.php
+│   ├── mail.php
+│   ├── queue.php
+│   ├── sanctum.php
+│   ├── services.php
+│   └── session.php
+├── database
+│   ├── factories
+│   │   └── UserFactory.php
+│   ├── migrations
+│   │   ├── 0001_01_01_000001_create_cache_table.php
+│   │   ├── 0001_01_01_000002_create_jobs_table.php
+│   │   ├── 01_create_roles_table.php
+│   │   ├── 02_create_users_table.php
+│   │   ├── 03_create_uploads_table.php
+│   │   ├── 04_create_pages_table.php
+│   │   ├── 05_create_exercises_table.php
+│   │   ├── 05_create_plans_table.php
+│   │   ├── 07_create_workouts_table.php
+│   │   ├── 08_create_swim_sets_table.php
+│   │   ├── 09_create_my_lists_table.php
+│   │   ├── 10_create_workout_exercises_table.php
+│   │   ├── 11_create_workout_swim_sets_table.php
+│   │   ├── 12_create_plan_workouts_table.php
+│   │   ├── 13_create_my_list_items_table.php
+│   │   ├── 2025_02_21_171749_create_personal_access_tokens_table.php
+│   │   ├── 2025_02_22_143626_modify_users_table.php
+│   │   └── 2025_02_22_164713_remove_old_name_from_users_table.php
+│   └── seeders
+│       ├── DatabaseSeeder.php
+│       ├── ExerciseSeeder.php
+│       ├── MylistItemSeeder.php
+│       ├── MylistSeeder.php
+│       ├── PageSeeder.php
+│       ├── PlanSeeder.php
+│       ├── PlanWorkoutSeeder.php
+│       ├── RoleSeeder.php
+│       ├── SwimSetSeeder.php
+│       ├── UploadSeeder.php
+│       ├── UserSeeder.php
+│       ├── WorkoutExerciseSeeder.php
+│       ├── WorkoutSeeder.php
+│       └── WorkoutSwimSetSeeder.php
+├── routes
+│   ├── api.php
+│   ├── console.php
+│   └── web.php
+├── routes.json
+├── storage
+│   ├── app
+│   │   ├── private
+│   │   │   └── uploads
+│   │   │       ├── 3Ug6df3ARZFOMvBvv8BIOssiQOvcFRY1ySzwrb6g.png
+│   │   │       ├── 48ntkBTTgOSD1xdQRU7CQLMxRI8prsE6KEhLGZjn.png
+│   │   │       ├── KwYMywK6LquL67vrDBUX0xt4OTjqoAciLNQEN509.png
+│   │   │       └── usYYoyIQ6wN6xVTncgR7aurwld6WpHUhUUwa2cEz.png
+│   │   ├── public
+│   │   │   └── uploads
+│   │   │       ├── NmLvnG5PiQXPyPnQy7VbOX2k40ZKxLUKKrz4XRob.png
+│   │   │       └── a8bOa67h7XxcnCo94BkL9i5OdgjX2V0Lw788i0WX.jpg
+│   │   └── uploads
