@@ -27,12 +27,13 @@ return [
     | Supported drivers: "local", "ftp", "sftp", "s3"
     |
     */
-
+     //Modification côté backend
+     //Remplacement app/private par app/public.
     'disks' => [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app/private'),
+            'root' => storage_path('app/public'),
             'serve' => true,
             'throw' => false,
             'report' => false,

@@ -44,7 +44,7 @@ class WorkoutSwimSetController extends Controller
         if ($workout->swimSets()->where('swim_set_id', $swimSet->id)->exists()) {
             return response()->json(['error' => 'Swim set already attached to this workout.'], 400);
         }
-
+        // Ajouter la série à la séance
         $workout->swimSets()->attach($swimSet->id);
         return response()->json(['message' => 'Swim set attached successfully.'], 201);
     }
@@ -60,7 +60,7 @@ class WorkoutSwimSetController extends Controller
         if (!$workout->swimSets()->where('swim_set_id', $swimSet->id)->exists()) {
             return response()->json(['error' => 'Swim set is not attached to this workout.'], 400);
         }
-
+       // Supprimer la série de la séance
         $workout->swimSets()->detach($swimSet->id);
         return response()->json(null, 204);
     }

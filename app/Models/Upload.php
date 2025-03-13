@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * 🇬🇧 Upload model representing a file uploaded by a user.
  * 🇫🇷 Modèle Upload représentant un fichier téléversé par un utilisateur.
  */
+
 class Upload extends Model
 {
     use HasFactory;

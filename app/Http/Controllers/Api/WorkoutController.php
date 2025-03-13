@@ -102,4 +102,11 @@ class WorkoutController extends Controller
         $workout->exercises()->detach($exerciseId);
         return response()->json(null, 204);
     }
+
+    public function getPlans($id)
+{
+    $workout = Workout::findOrFail($id);
+    return response()->json($workout->plans);
+}
+
 }

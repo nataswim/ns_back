@@ -94,6 +94,14 @@ Route::get('workouts/{workout}/swim-sets', [WorkoutController::class, 'getSwimSe
 Route::post('workouts/{workout}/swim-sets/{swimSet}', [WorkoutController::class, 'addSwimSet']);
 Route::delete('workouts/{workout}/swim-sets/{swimSet}', [WorkoutController::class, 'removeSwimSet']);
 Route::get('/workouts/{workout}/swim-sets', [WorkoutSwimSetController::class, 'index']);
+Route::get('/workouts/{id}/plans', [WorkoutController::class, 'getPlans']);
+
+// 12-03-10H Routes pour la gestion des swim-sets dans les workouts
+Route::get('workouts/{workout}/swim-sets', [WorkoutSwimSetController::class, 'index']);
+Route::post('workouts/{workout}/swim-sets/{swimSet}', [WorkoutSwimSetController::class, 'store']);
+Route::delete('workouts/{workout}/swim-sets/{swimSet}', [WorkoutSwimSetController::class, 'destroy']);
+
+
 
 // ************************************************************************
 // 🇬🇧 Routes for Swim Sets (Séries de natation)

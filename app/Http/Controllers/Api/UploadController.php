@@ -21,6 +21,9 @@ class UploadController extends Controller
         return response()->json($uploads, 200);
     }
 
+    
+    
+    
     /**
      * 🇬🇧 Store a newly created resource in storage.
      * 🇫🇷 Enregistrer un nouveau fichier dans le stockage.
@@ -59,6 +62,8 @@ class UploadController extends Controller
         return response()->json(['error' => 'No file uploaded'], 400); // 🇬🇧 No file found / 🇫🇷 Aucun fichier trouvé
     }
 
+    
+    
     /**
      * 🇬🇧 Display the specified resource.
      * 🇫🇷 Afficher un fichier spécifique.
@@ -68,6 +73,8 @@ class UploadController extends Controller
         return response()->json($upload, 200);
     }
 
+    
+    
     /**
      * 🇬🇧 Update the specified resource in storage.
      * 🇫🇷 Mettre à jour un fichier existant.
@@ -95,6 +102,8 @@ class UploadController extends Controller
         return response()->json($upload, 200);
     }
 
+    
+    
     /**
      * 🇬🇧 Remove the specified resource from storage.
      * 🇫🇷 Supprimer un fichier spécifique du stockage.
@@ -108,6 +117,8 @@ class UploadController extends Controller
         return response()->json(null, 204);
     }
 
+   
+   
     /**
      * 🇬🇧 Get uploads by user.
      * 🇫🇷 Récupérer les fichiers uploadés par un utilisateur spécifique.
