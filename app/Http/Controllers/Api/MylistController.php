@@ -13,9 +13,16 @@ class MylistController extends Controller
      * 🇬🇧 Display a listing of the resource.
      * 🇫🇷 Afficher la liste des listes personnelles.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mylists = Mylist::all();
+        // Si un user_id est fourni, filtrer les listes par utilisateur
+        if ($request->has('user_id')) {
+            $userId = $request->input('user_id');
+            $mylists = Mylist::where('user_id', $userId)->get();
+        } else {
+            $mylists = Mylist::all();
+        }
+        
         return response()->json($mylists, 200);
     }
 
@@ -35,7 +42,14 @@ class MylistController extends Controller
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $mylist = Mylist::create($request->validated());
+        // Uniquement utiliser les données validées
+        $data = [
+            'user_id' => $request->input('user_id'),
+            'title' => $request->input('title'),
+            'description' => $request->input('description')
+        ];
+
+        $mylist = Mylist::create($data);
         return response()->json($mylist, 201);
     }
 
@@ -64,7 +78,14 @@ class MylistController extends Controller
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $mylist->update($request->validated());
+        // Uniquement utiliser les données validées
+        $data = [
+            'user_id' => $request->input('user_id'),
+            'title' => $request->input('title'),
+            'description' => $request->input('description')
+        ];
+
+        $mylist->update($data);
         return response()->json($mylist, 200);
     }
 
@@ -76,5 +97,29 @@ class MylistController extends Controller
     {
         $mylist->delete();
         return response()->json(null, 204);
+    }
+
+    /**
+     * 🇬🇧 Duplicate a mylist.
+     * 🇫🇷 Dupliquer une liste personnelle.
+     */
+    public function duplicate(Mylist $mylist)
+    {
+        // Créer une nouvelle liste avec les mêmes informations
+        $newList = Mylist::create([
+            'user_id' => $mylist->user_id,
+            'title' => $mylist->title . ' (copie)',
+            'description' => $mylist->description
+        ]);
+        
+        // Dupliquer les éléments de la liste
+        foreach ($mylist->mylistItems as $item) {
+            $newList->mylistItems()->create([
+                'item_id' => $item->item_id,
+                'item_type' => $item->item_type
+            ]);
+        }
+        
+        return response()->json($newList, 201);
     }
 }

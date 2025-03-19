@@ -50,6 +50,18 @@ class MylistItem extends Model
      */
     public function item()
     {
-        return $this->morphTo();
+        return $this->morphTo('item');
+    }
+
+    /**
+     * 🇬🇧 Get the parent item model (Exercise, Workout, Plan)
+     * 🇫🇷 Récupérer le modèle parent de l'élément (Exercise, Workout, Plan)
+     */
+    public function getItemDetails()
+    {
+        if (class_exists($this->item_type)) {
+            return $this->item_type::find($this->item_id);
+        }
+        return null;
     }
 }

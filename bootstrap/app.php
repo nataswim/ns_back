@@ -12,7 +12,18 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Ajouter le middleware CORS global
+        $middleware->append(\Illuminate\Http\Middleware\HandleCors::class);
+        
+        // Ajouter le middleware dans le groupe API
+        $middleware->api(append: [
+            \Illuminate\Http\Middleware\HandleCors::class,
+        ]);
+        
+        // Vous pouvez aussi l'ajouter comme alias pour l'utiliser dans les routes
+        $middleware->alias([
+            'cors' => \Illuminate\Http\Middleware\HandleCors::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
